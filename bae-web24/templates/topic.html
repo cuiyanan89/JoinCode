@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+	{% load markup %}
+	<div class="row-fluid">
+		<div class="span4">
+			<div class="well sidebar-nav">
+				 
+		      <div>
+		      	<img src="{{article.author.prouser.headimg}}" width="80px" height="80px" alt="">
+		      	<li>组长:<a href="/blog/{{article.author.id}}/">{{article.author.username}}</a></li>
+		      </div>
+		    </div>
+
+		      <div class="row-fluid">
+		    	<div class="well sidebar-nav">
+					<ul class="nav nav-list">
+						<li><a href="/article/{{article.group.id}}/">发起小组话题</a></li>
+						<li><a href="/blog/{{user.id}}/">我的小组话题</a></li>
+						<li><a href="">回应小组话题</a></li>
+					</ul>
+		    	</div>
+		    </div>
+		</div>
+		<div class="span8">
+			<div class="well sidebar-nav codehilite">
+				<h3>{{article.title}}</h3>
+				<p>发表时间 : {{article.create_time|date:"m/d/Y"}}</p>
+				&nbsp;&nbsp;&nbsp;{{article.content|markdown:'codehilite'}}
+			</div>
+			<div class="row-fluid">
+				<div class="well sidebar-nav">
+					<h3>Reply</h3>
+				{% for reply in article.reply_set.all %}
+					<div class="control-group codehilite">
+						<span><img src="{{reply.user.prouser.headimg}}" height='40px' width='40px' alt="">
+							<a href="/blog/{{reply.user.id}}/">来自:{{reply.user.username}}</a></span>
+						<p>{{reply.create_time|date:"m/d/Y"}}</p>
+		               	<div class="controls">
+		               		{{reply.content|markdown:'codehilite'}}
+		               	</div>
+	                </div>
+				{% endfor %}
+				</div>
+			</div>
+			{% if user %}
+			<div class="well sidebar-nav">
+				<form action="" method="post">
+					{% csrf_token %}
+				 <div class="control-group">
+                  <textarea type="" name="content" style="margin: 0px; width: 714px; height: 36px;"></textarea>
+              </div>
+	            <div class="control-group">
+	               	<div class="controls">
+	            		<button type="submit" class="btn btn-success">提交</button>
+	          		</div>
+	          	</div>
+				</form>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

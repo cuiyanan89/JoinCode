@@ -1,0 +1,220 @@
+<!DOCTYPE html><!-- saved from url=(0055)http://docs.bootcss.com/bootstrap-2.3.2/docs/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootstrap是Twitter推出的一个用于前端开发的开源工具包。它由Twitter的设计师Mark Otto和Jacob Thornton合作开发，是一个CSS/HTML框架。Bootstrap中文网致力于为广大国内开发者提供详尽的中文文档、代码实例等，助力开发者掌握并使用这一框架。">
+    <meta name="author" content="Bootstrap中文网">
+    <meta name="keywords" content="Bootstrap,CSS,CSS框架,CSS framework,javascript,bootcss,bootstrap开发,bootstrap代码,bootstrap入门">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="index.html">Bootstrap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="index.html">首页</a>
+              </li>
+              <li class="">
+                <a href="getting-started.html">起步</a>
+              </li>
+              <li class="">
+                <a href="scaffolding.html">脚手架</a>
+              </li>
+              <li class="">
+                <a href="base-css.html">基本CSS样式</a>
+              </li>
+              <li class="">
+                <a href="components.html">组件</a>
+              </li>
+              <li class="">
+                <a href="javascript.html">JavaScript插件</a>
+              </li>
+              <li class="">
+                <a href="customize.html">定制</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="jumbotron masthead">
+  <div class="container">
+    <h1>Bootstrap</h1>
+    <p>简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</p>
+    <p>
+      <a href="../../../https@github.com/twitter/bootstrap/archive/v2.3.2.zip" class="btn btn-primary btn-large" >下载Bootstrap</a>
+    </p>
+    <ul class="masthead-links">
+      <li>
+        <a href="../../../github.com/twitter/bootstrap" >GitHub project</a>
+      </li>
+      <li>
+        <a href="getting-started.html#examples" >案例</a>
+      </li>
+      <li>
+        <a href="extend.html" >扩展</a>
+      </li>
+      <li>
+        Version 2.3.2
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="bs-docs-social">
+  <div class="container">
+    <ul class="bs-docs-social-buttons">
+      <li class="follow-btn">
+        <a href="../../../https@twitter.com/twbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @twbootstrap</a>
+      </li>
+      <li class="tweet-btn">
+        <a href="../../../https@twitter.com/share" class="twitter-share-button" data-url="http://twitter.github.com/bootstrap/" data-count="horizontal" data-via="twbootstrap" data-related="mdo:Creator of Twitter Bootstrap">Tweet</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="marketing">
+
+    <h1>Bootstrap介绍。</h1>
+    <p class="marketing-byline">需要为爱上Bootstrap找N多理由吗？ 就在眼前。</p>
+
+      <div class="row-fluid">
+    <div class="span4">
+     <img class="marketing-img" src="assets/img/bs-docs-twitter-github.png">
+    <h2>人人为我，我为人人。</h2>
+    <p>由<a href="../../../twitter.com/mdo">@mdo</a> 和 <a href="../../../twitter.com/fat">@fat</a> 在Twitter工作时创建，Bootstrap使用 <a href="../../lesscss.html">LESS CSS</a> 并用 <a href="../../../nodejs.org/default.htm">Node</a> 编译，托管在 <a href="../../../github.com/default.htm">GitHub</a> 上，方便大家使用这一框架构建更好的web应用。</p>
+    </div>
+    <div class="span4">
+     <img class="marketing-img" src="assets/img/bs-docs-responsive-illustrations.png">
+    <h2>任何人都可以使用。</h2>
+    <p>Bootstrap不光为了看起来好看，而且在现代的桌面浏览器上有极佳的表现(包括IE7！)。在平板电脑和智能手机上面还有 <a href="scaffolding.html#responsive">响应式CSS</a> 可以使用。</p>
+    </div>
+    <div class="span4">
+     <img class="marketing-img" src="assets/img/bs-docs-bootstrap-features.png">
+    <h2>丰富的特色。</h2>
+    <p>12列的响应式<a href="scaffolding.html#grid">栅格结构</a>、丰富的组件、<a href="javascript.html">JavaScript插件</a>、排版、表单控件，还有 <a href="customize.html">基于web的定制工具</a>。</p>
+    </div>
+  </div>
+
+    <hr class="soften">
+
+    <h1>基于Bootstrap构建的网站。</h1>
+    <p class="marketing-byline">更多基于Bootstrap构建的网站列表，请 <a href="../../../builtwithbootstrap.tumblr.com/default.htm" target="_blank">访问非官方的Tumblr网站</a> 或者 <a href="getting-started.html#examples">看看下面的几个案例</a>。</p>
+    <div class="row-fluid">
+      <ul class="thumbnails example-sites">
+        <li class="span3">
+          <a class="thumbnail" href="../../../soundready.fm/default.htm" target="_blank">
+            <img src="assets/img/example-sites/soundready.png" alt="SoundReady.fm">
+          </a>
+        </li>
+        <li class="span3">
+          <a class="thumbnail" href="../../../kippt.com/default.htm" target="_blank">
+            <img src="assets/img/example-sites/kippt.png" alt="Kippt">
+          </a>
+        </li>
+        <li class="span3">
+          <a class="thumbnail" href="../../../www.gathercontent.com/default.htm" target="_blank">
+            <img src="assets/img/example-sites/gathercontent.png" alt="Gather Content">
+          </a>
+        </li>
+        <li class="span3">
+          <a class="thumbnail" href="../../../www.jshint.com/default.htm" target="_blank">
+            <img src="assets/img/example-sites/jshint.png" alt="JS Hint">
+          </a>
+        </li>
+      </ul>
+     </div>
+
+  </div>
+
+</div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>Designed and built with all the love in the world by <a href="../../../twitter.com/mdo" target="_blank">@mdo</a> and <a href="../../../twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under <a href="../../../www.apache.org/licenses/license-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="../../../creativecommons.org/licenses/by/3.0/default.htm">CC BY 3.0</a>.</p>
+        <p><a href="../../../glyphicons.com/default.htm">Glyphicons Free</a> licensed under <a href="../../../creativecommons.org/licenses/by/3.0/default.htm">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+          <li><a href="../../../blog.getbootstrap.com/default.htm">Blog</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="../../../https@github.com/twitter/bootstrap/issues@state=open">问题反馈</a></li>
+          <li class="muted">&middot;</li>
+          <li><a href="../../../https@github.com/twitter/bootstrap/blob/master/changelog.md">版本变更记录</a></li>
+        </ul>
+      </div>
+    </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-affix.js"></script>
+
+    <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+
+    <script src="assets/js/application.js"></script>
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F5431b5c4350087071eb1ebf10400a254' type='text/javascript'%3E%3C/script%3E"));
+</script>
+  </body>
+</html>

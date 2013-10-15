@@ -1,0 +1,40 @@
+
+<div class="span4">
+		<div class="well sidebar-nav">
+			<ul class="nav nav-list">
+				<li><a href="">我发起的活动</a></li>
+				<li><a href="">我的小组话题</a></li>
+				<li><a href="">我回应的活动</a></li>
+			</ul>
+		</div>
+		{% if user %}
+		<div class="row-fluid">
+			<div class="well sidebar-nav" style="width:332px;height:250px;">
+				<h3>我的小组 </h3>
+				<ul class="nav nav-list">
+					{% for mygroup in user.members.all%}
+					<li><span><img src="" alt="aaa"></span>
+						<span>
+						<a href="/group/{{mygroup.id}}/">{{mygroup.groupname}}
+						{% if mygroup.isPublic == False%}
+						[private]
+						{% endif %}
+						</a>
+						</span>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+		<div class="row-fluid" >	
+			<div class="well sidebar-nav" style="width:332px;height:250px;">
+				<h3>我的关注</h3>
+				<ul class="nav nav-list">
+		  			{% for atte_user in user.prouser.attention.all %}
+		  			<li><a href="/blog/{{atte_user.id}}">{{atte_user.username}}</a></li>
+		  			{% endfor%}
+				</ul>
+			</div>
+		</div>				
+</div>

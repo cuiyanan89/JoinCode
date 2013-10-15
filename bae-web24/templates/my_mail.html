@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{% block title%} my mail{%endblock%}
+
+{%block content%}
+	<div class="container-fluid">
+		<div class="row-fluid">
+		    <div class="span3 div-style">
+		    	<img src="{{user.prouser.headimg}}"  alt="123" height="80px" width="80px">
+				<h3>{{about_user.username}}</h3>
+				{% if about_user != user%}
+				<div>
+					<li><a href="/attention/{{about_user.id}}/">+关注</a></li>
+					<li><a href="/letter/{{about_user.id}}/">+私信</a></li>
+				</div>
+				{% else%}
+				<div>
+					<li><a href="/account/{{user.id}}">+设置</a></li>
+				</div>
+				{% endif %}
+
+		    </div>
+		    <div class="span8 div-style">
+		      <div>
+		      	<h3>letter</h3>
+		     		{%if about_user == user%}
+<!-- 		     		{% for letter in letter_list%}
+			     		{%if letter.invite_id %}
+			     		<div><span>{{letter.create_time|date:"Y-m-s"}}</span>
+						<span>{{letter.post_user}} 邀请加入小组</span>
+						<a href="/add_group/{{letter.invite_id}}/" class="btn btn-success">add</a>
+			     		</div>
+			     		{% endif%}
+		     		<div>
+		     			<span>{{letter.create_time|date:"Y-m-s"}}</span>
+		     			<span>
+		     			<a href="/blog/{{letter.post_user.id}}/">{{letter.post_user}}</a>
+		     			</span>
+		     			<span>{{letter.letter}}</span>
+		     		</div>
+		     		{% endfor %} -->
+		     		
+					
+		     		{% for letter in letter_list%}
+		     		{% if letter.invite_id%}
+					<div><span>{{letter.create_time|date:"Y-m-s"}}</span>
+						<span>{{letter.post_user}} 邀请加入小组</span>
+						<a href="/add_group/{{letter.invite_id}}/" class="btn btn-success">加入</a>
+			     		</div>
+					{% endif %}
+					<table class="table table-hover table-condensed">
+						<tr class="success">
+						    <td width="400px"><a href="">{{letter.letter}}</a></td>
+						    <td>{{letter.create_time|date:"m/d/Y"}}</td>
+						    <td>来自 >> <a href="/blog/{{letter.post_user.id}}/">{{letter.post_user}}</a></td>
+					 	</tr>
+					</table>
+					{% endfor %}
+					{% endif%}
+		      </div>
+		    </div>
+		</div>
+	</div>
+
+{%endblock%}

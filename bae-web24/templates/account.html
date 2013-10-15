@@ -1,0 +1,79 @@
+{% extends 'base.html'%}
+{% block title%} blog{%endblock%}
+
+{%block content%}
+	<div class="container-fluid">
+		<div class="row-fluid">
+		    <div class="span3 div-style">
+		    	<img src="{{user.prouser.headimg}}" alt="" width=80px height=80px>
+				<h3>{{user.username}}</h3>		
+				<div>
+					<li><a href="/blog/{{user.id}}">个人主页</a></li>
+				</div>
+		    </div>
+
+		    <div class="span8 div-style">
+		      <div>
+				  <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+				  	{% csrf_token %}
+				    <fieldset>
+				      <div id="legend" class="">
+				        <legend class="">修改设置</legend>
+				      </div>
+				    <div class="control-group">
+
+				          <!-- Text input-->
+				          <label class="control-label" for="input01">用户名</label>
+				          <div class="controls" >
+				            <input type="text" value="{{user.username}}" class="input-xlarge" name='username' disabled>
+				            <p class="help-block"></p>
+				          </div>
+				        </div>
+
+				    <div class="control-group">
+
+				          <!-- Text input-->
+				          <label class="control-label" for="input01">邮箱</label>
+				          <div class="controls">
+				            <input type="text" placeholder="{{user.email}}" class="input-xlarge" name="email">
+				            <p class="help-block"></p>
+				          </div>
+				        </div>
+
+				       	<div class="control-group">
+
+				          <!-- Text input-->
+				          <label class="control-label" for="input01">新密码</label>
+				          <div class="controls">
+				            <input type="password" placeholder="修改的密码" class="input-xlarge" name='newpasswd'>
+
+				          </div>
+				        </div>
+
+				    <div class="control-group">
+				          <label class="control-label">上传头像</label>
+
+				          <!-- File Upload -->
+				          <div class="controls">
+				            <input  type="file" name="headimg" >
+				          </div>
+				        </div>
+
+				    <div class="control-group">
+				          <label class="control-label"></label>
+
+				          <!-- Button -->
+				          <div class="controls">
+				            <button type="submit" class="btn btn-success">提交</button>
+				          </div>
+				        </div>
+
+				    </fieldset>
+				  </form>
+
+		      </div>
+		    </div>
+		</div>
+	</div>
+
+{%endblock%}
