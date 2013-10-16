@@ -21,4 +21,5 @@ urlpatterns = patterns('',
     url(r'^account/(?P<id>\d+)/$', 'blog.views.account'),
     url(r'^article/(?P<id>\d+)/$', 'blog.views.article'),
     url(r'^topic/(?P<id>\d+)/$', 'blog.views.topic'),
+    url(r'^discover/$','blog.views.discover'),
 )

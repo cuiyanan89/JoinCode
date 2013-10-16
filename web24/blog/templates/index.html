@@ -39,8 +39,10 @@
 								<i class="icon-comment"></i>
 									说句话
 							</li>
+                            <li>
+						    <textarea style="width:650px" ></textarea>
+                            </li>
 						</ul>
-						<textarea style="width:650px" ></textarea>
 						<hr/>
 					</div>
 				</div>
@@ -55,7 +57,11 @@
 									<p> 标题 :{{article.title}}</p>
 									<p> 内容 :{{article.content|markdown:'codehilite'}}</p>
 									<p> 发表时间 : {{article.create_time|date:"m/d/Y"}} 来自 {{article.group}}小组</p>
-									<a class="btn btn-primary" href="/topic/{{article.id}}/" data-toggle="modal">回帖 »</a>									
+                                    {%if user.username%}
+									<a class="btn btn-primary" href="/topic/{{article.id}}/" data-toggle="modal">回帖 »</a>				
+                                    {%else%}
+									<a class="btn btn-primary disabled" href="" data-toggle="modal">回帖 »</a>				
+                                    {%endif%}
 								</li>							
 							</ul>
 						</div>

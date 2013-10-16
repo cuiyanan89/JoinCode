@@ -1,5 +1,5 @@
 #_*_coding:utf-8_*_ 
-
+from math import ceil
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
@@ -185,3 +185,10 @@ def account(request, id):
 def logout_user(request):
 	request.session.clear()
 	return HttpResponseRedirect('/index/')
+
+def discover(request):
+    groups = Group.objects.filter(isPublic=True)[::-1]
+    group_len = len(groups)
+    group_list = zip([groups[x] for x in filter(lambda x: x%2==0,xrange(group_len))],[groups[x] for x in filter(lambda x: x%2==1,xrange(group_len))])
+    print group_list
+    return render(request,'discover.html',{'group_list':group_list})
