@@ -45,20 +45,20 @@ def login_user(request):
 	return HttpResponseRedirect('/p_index/%s' % id)
 
 def sign_user(request):
-	if request.method == 'POST':
+    if request.method == 'POST':
 		username = request.POST['username']
 		email = request.POST['email']
 		password = request.POST['passwd']
 		password = hashlib.sha1(username + password).hexdigest()
-        user = User.objects.create_user(username=username,email=email)
-        user.set_password(password)
-        user.save()
-        id = user.id
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-        return HttpResponseRedirect('/p_index/%s'%id)
-	else:
+		user = User.objects.create_user(username=username,email=email)
+		user.set_password(password)
+		user.save()
+		id = user.id
+		user = authenticate(username=username, password=password)
+		if user is not None:
+		    login(request, user)
+		return HttpResponseRedirect('/p_index/%s'%id)
+    else:
         return HttpResponseRedirect('/index/')
 
 def create_group(request):
@@ -215,6 +215,8 @@ def discover(request):
     groups = Group.objects.filter(isPublic=True)[::-1]
     group_len = len(groups)
     group_list = zip([groups[x] for x in filter(lambda x: x%2==0,xrange(group_len))],[groups[x] for x in filter(lambda x: x%2==1,xrange(group_len))])
+    if group_len%2==1:
+        group_list.append((groups[-1],))
     if request.user.is_authenticated():
         user = request.user
         attentioned_list = user.members.all()
