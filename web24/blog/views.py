@@ -50,16 +50,16 @@ def sign_user(request):
 		email = request.POST['email']
 		password = request.POST['passwd']
 		password = hashlib.sha1(username + password).hexdigest()
-		user = User.objects.create_user(username=username,email=email)
-		user.set_password(password)
-		user.save()
-		user = authenticate(username=username, password=password)
-		id = user.id
-		if user is not None:
-			login(request, user)
-		return HttpResponseRedirect('/p_index/%s' % id)
+        user = User.objects.create_user(username=username,email=email)
+        user.set_password(password)
+        user.save()
+        id = user.id
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+        return HttpResponseRedirect('/p_index/%s'%id)
 	else:
-		return HttpResponseRedirect('/index/')
+        return HttpResponseRedirect('/index/')
 
 def create_group(request):
 	if request.method == 'POST':
@@ -210,7 +210,6 @@ def account(request, id):
 def logout_user(request):
 	request.session.clear()
 	return HttpResponseRedirect('/index/')
-<<<<<<< HEAD
 
 def discover(request):
     groups = Group.objects.filter(isPublic=True)[::-1]
@@ -222,5 +221,3 @@ def discover(request):
     else:
         attentioned_list = []
     return render(request,'discover.html',{'group_list':group_list,'attentioned_list':attentioned_list})
-=======
->>>>>>> 5120f7afb3cf412eb44f2ff880f28b6e1a42186d

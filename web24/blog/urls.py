@@ -23,9 +23,6 @@ urlpatterns = patterns('',
     url(r'^account/(?P<id>\d+)/$', 'blog.views.account'),
     url(r'^article/(?P<id>\d+)/$', 'blog.views.article'),
     url(r'^topic/(?P<id>\d+)/$', 'blog.views.topic'),
-<<<<<<< HEAD
     url(r'^discover/$','blog.views.discover'),
-=======
 	url(r'^cancel_attention/(?P<id>\d+)/$','blog.views.cancel_attention')
->>>>>>> 5120f7afb3cf412eb44f2ff880f28b6e1a42186d
 )
