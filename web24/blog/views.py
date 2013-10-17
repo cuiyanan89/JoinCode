@@ -151,8 +151,7 @@ def attention(request, id):
 	if request.user.is_authenticated():
 		user = request.user
 		user.prouser.attention.add(about_user)
-		id = id
-		return HttpResponseRedirect('/cancel_attention/%s' % id)
+		return HttpResponseRedirect('/blog/%s'%about_user.id)
 	return HttpResponse('attention friends')
 
 

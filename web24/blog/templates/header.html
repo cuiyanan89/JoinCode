@@ -75,7 +75,7 @@
 				<ul class="nav pull-right">
 					{% if user.username%}
 					<li><a href="/my_mail/{{user.id}}/">邮箱</a></li>
-					<li><img src="/static/{{user.prouser.headimg}}/" alt="" width="50px;"></li>				
+					<li><img src="/static/{{user.prouser.headimg}}/" alt="headimg" width="35px;"></li>				
 					<li><a href="/blog/{{user.id}}/">{{user.username}}</a></li>
 					<li><a href="/logout/">退出</a></li>	
 					{% else%}

@@ -9,7 +9,7 @@
 		</div>
 		{% if user %}
 		<div class="row-fluid">
-			<div class="well sidebar-nav" style="width:332px;height:250px;">
+			<div class="well sidebar-nav">
 				<h3>我的小组 </h3>
 				<ul class="nav nav-list">
 					{% for mygroup in user.members.all%}
@@ -28,7 +28,7 @@
 		</div>
 		{% endif %}
 		<div class="row-fluid" >	
-			<div class="well sidebar-nav" style="width:332px;height:250px;">
+			<div class="well sidebar-nav">
 				<h3>我的关注</h3>
 				<ul class="nav nav-list">
 		  			{% for atte_user in user.prouser.attention.all %}
