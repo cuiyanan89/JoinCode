@@ -19,6 +19,9 @@
 					<div class="well sidebar-nav" style="width:332px;height:250px;">
 						<h3>我关注的人</h3>
 						<ul class="nav nav-list">
+							{% for i in add_user %}
+							<li><a href="">{{i}}</a></li>
+							{% endfor %}
 						</ul>				
 					</div>
 				</div>
@@ -37,7 +40,7 @@
 						<h3>热门话题</h3>
 						<ul>
 						{% for i in article_list %}
-							<li><a href="">{{i.title}}</a></li>
+							<li><a href="/people_index/{{i.author.id}}">{{i.title}}</a></li>
 						{% endfor %}
 						</ul>
 					</div>

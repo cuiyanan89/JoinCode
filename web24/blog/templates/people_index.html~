@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% block title%}index{%endblock%}
+
+{%block content%}
+<div class="container">
+	<div class="row-fluid">
+		<div class="span4">
+			<div class="well sidebar-nav">
+				<img src="/static/{{user_name.prouser.headimg}}/" alt="" width="100px">
+				<h3>{{user_name.username}}</h3>	      
+			</div>
+			<div class="row-fluid">
+				<div class="well sidebar-nav">
+					<ul class="nav nav-list">
+						<li><a href="/article/{{group.id}}/">发起小组话题</a></li>
+						<li><a href="/blog/{{user.id}}/">我的小组话题</a></li>
+						<li><a href="">回应小组话题</a></li>
+					</ul>
+		    	</div>
+		   </div>
+		   <div class="row-fluid">
+
+			</div>
+		</div>
+		<div class="span8">
+			<div class="row-fluit">
+				<div class="well sidebar-nav codehilite">
+					<ul>
+					{% for article in article_list%}
+						<li>
+							<img src="/static/{{article.author.prouser.headimg}}/" alt="" width="50px">
+							<h5>作者:{{article.author}}</h5>
+							<p> 标题 :{{article.title}}</p>
+							<p> 内容 :{{article.content}}</p>
+							<p> 发表时间 : {{article.create_time|date:"m/d/Y"}} 来自 {{article.group}}小组</p>
+							<a class="btn btn-primary" href="/topic/{{article.id}}/" data-toggle="modal">回帖 »</a>									
+						</li>
+					{% endfor %}							
+					</ul>
+				</div>
+				<hr/>
+			</div>
+		</div>
+	</div>
+</div>
+{%endblock%}

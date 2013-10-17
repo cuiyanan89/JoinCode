@@ -43,7 +43,7 @@
 					<li><a href="/people_index/{{user.id}}">我的Joincode</a></li>
 					<li><a href="#">浏览发现</a></li>
 				</ul>
-				<h3 class="muted"><a href="/p_index/{{user.id}}">Join code</a></h3>
+				<h3 class="muted"><a href="/index/">Join code</a></h3>
 			</div>
 			<hr>
 		</div>

@@ -2,134 +2,66 @@
 {% block title%}index{%endblock%}
 
 {%block content%}
-	<div class="container-narrow"  style="margin-top: 70px;">
-		<div class="masthead">
-			<ul class="nav nav-pills pull-right">
-				<li><a href="/index/">首页</a></li>
-				<li><a href="#">我的Joincode</a></li>
-				<li><a href="#">浏览发现</a></li>
-			</ul>
-			<h3 class="muted"><a href="">Join code</a></h3>
-		</div>
-		<hr>
-	</div>
+
 	<div class="container">
+		{% load markup %}
 		<div class="row-fluid">
 			<div class="span4">
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
-						<li><a href="">我参加的小组</a></li>
-						<li><a href="">我发起的活动</a></li>
+						<li><a href="/blog/{{user.id}}/">我发起的活动</a></li>
 						<li><a href="">我的小组话题</a></li>
 						<li><a href="">我回应的活动</a></li>
+						<li><a href="/create_group/">申请小组</a></li>
 					</ul>
 				</div>
 				<div class="row-fluid">
-					<div class="span4">
-						<div class="well sidebar-nav" style="width:332px;height:250px;">
-							<img src="/static/img/83025aafa40f4bfb0a1bab94024f78f0f6361822.jpg/" alt="" >
-						</div>
+					<div class="well sidebar-nav" style="width:332px;height:250px;">
+						<h3>我关注的人</h3>
+						<ul class="nav nav-list">
+							{% for i in att%}
+						</ul>				
 					</div>
 				</div>
-				<div class="row-fluid" >
-					<div class="span4">
-						<div class="well sidebar-nav" style="width:332px;height:250px;">
-							<img src="/static/img/83025aafa40f4bfb0a1bab94024f78f0f6361822.jpg/" alt="" >
-						</div>
-					</div>
-				</div>				
-				<div class="row-fluid" >
-					<div class="span4">
-						<div class="well sidebar-nav" style="width:332px;height:250px;">
-							<img src="/static/img/83025aafa40f4bfb0a1bab94024f78f0f6361822.jpg/" alt="" >
-						</div>
-					</div>
-				</div>				
-				<div class="row-fluid" >
-					<div class="span4">
-						<div class="well sidebar-nav" style="width:332px;height:250px;">
-							<img src="/static/img/83025aafa40f4bfb0a1bab94024f78f0f6361822.jpg/" alt="" >
-						</div>
+				<div class="row-fluid">
+					<div class="well sidebar-nav" style="width:332px;height:250px;">
+						<h3>热门小组</h3>
+						<ul class="nav nav-list">
+						{% for group in group_list %}
+							<li><a href="/group/{{group.id}}/">{{group.groupname}}</a></li>
+						{% endfor %}
+						</ul>				
 					</div>
 				</div>
+				<div class="row-fluid">
+					<div class="well sidebar-nav" style="width:332px;height:250px;">
+						<h3>热门话题</h3>
+						<ul>
+						{% for i in article_list %}
+							<li><a href="">{{i.title}}</a></li>
+						{% endfor %}
+						</ul>
+					</div>
+				</div>			
 			</div>
 			<div class="span7">
-				<ul>
-					<li>
-						<i class="icon-comment"></i>
-							说句话
-					</li>
-				</ul>
-				<textarea style="width:500px" ></textarea>
-				<hr/>
 				<div class="span12">
 					<div class="row-fluit">
-						<div class="well sidebar-nav">
-							<ul>
-								<li>
-										<img src="http://tb.himg.baidu.com/sys/portrait/item/6142c8a8bca6d3bf48454152540f30" alt="" width="50px">
-										<h5>bbb的Join东东：</h5>
-										<p>title</p>
-										<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-										<h6>2分钟前</h6>	
-										<a class="btn btn-primary" href="/replay/{{post.id}}/" data-toggle="modal">回帖 »</a>									
-								</li>							
-							</ul>
-						</div>
-						<hr/>
-						<div class="well sidebar-nav">
-							<ul>
-								<li>
-										<img src="http://tb.himg.baidu.com/sys/portrait/item/415bcfabd7d364656d617530" alt="" width="50px">
-										<h5>ccc的Join东东：</h5>
-										<p>title</p>
-										<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-										<h6>2分钟前</h6>	
-										<a class="btn btn-primary" href="/replay/{{post.id}}/" data-toggle="modal">回帖 »</a>									
-								</li>							
-							</ul>
-						</div>
-						<hr/>
-						<div class="well sidebar-nav">
-							<ul>
-								<li>
-										<img src="http://tb.himg.baidu.com/sys/portrait/item/1c95637a79d3b9c8cbd7d4c8c5002c" alt="" width="50px">
-										<h5>ddd的Join东东：</h5>
-										<p>title</p>
-										<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-										<h6>2分钟前</h6>		
-										<a class="btn btn-primary" href="/replay/{{post.id}}/" data-toggle="modal">回帖 »</a>								
-								</li>							
-							</ul>
-						</div>
-						<hr/>
-						<div class="well sidebar-nav">
-							<ul>
-								<li>
-										<img src="http://tb.himg.baidu.com/sys/portrait/item/124d6d5f5fbeedb6faae31" alt="" width="50px">
-										<h5>eee的Join东东：</h5>
-										<p>title</p>
-										<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-										<h6>2分钟前</h6>
-										<a class="btn btn-primary" href="/replay/{{post.id}}/" data-toggle="modal">回帖 »</a>										
-								</li>							
-							</ul>
-						</div>
-						<hr/>
-						<div class="well sidebar-nav">
-							<ul>
-								<li>
-										<img src="http://tb.himg.baidu.com/sys/portraitn/item/0b59c3c8dfd5dfd5b5c4c0bcb9d6bfa74a33" alt="" width="50px">
-										<h5>fff的Join东东：</h5>
-										<p>title</p>
-										<p>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
-										<h6>2分钟前</h6>
-										<a class="btn btn-primary" href="/replay/{{post.id}}/" data-toggle="modal">回帖 »</a>										
-								</li>							
-							</ul>
-						</div>
+						<ul>
+							<li>
+								<i class="icon-comment"></i>
+									说句话
+							</li>
+						</ul>
+						<form action="" method="post">
+							<textarea style="width:650px" ></textarea>
+							<input type="submit" value="我说" class="btn btn-primary"/>
+						</form>
 						<hr/>
 					</div>
+				</div>
+				<div class="span12">
+					
 				</div>
 			</div>
 		</div>

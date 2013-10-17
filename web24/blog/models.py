@@ -7,7 +7,7 @@ from markdown import markdown
 
 class ProUser(models.Model):
 	user = models.OneToOneField(User, related_name=u'prouser')
-	headimg = models.CharField(max_length=200,blank=True, null=True, verbose_name=u'headimg')
+	headimg = models.FileField(upload_to="./img",null=True,blank=True)
 	attention = models.ManyToManyField(User, related_name=u'attention')
 
 	def __unicode__(self):

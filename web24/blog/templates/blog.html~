@@ -36,7 +36,7 @@
 						    <td width="400px"><a href="/topic/{{article.id}}/">{{article.title}}</a></td>
 						    <td>{{article.create_time|date:"m/d/Y"}}</td>
 						    <td><a href="/blog/{{article.author.id}}/">{{article.author}}</a></td>
-						    <td><a href="" >({{article.reply_set.count}})</a></td>
+						    <td><a href="" >{{article.reply_set.count}}</a></td>
 					 	</tr>
 					</table>
 				{% endfor %}
