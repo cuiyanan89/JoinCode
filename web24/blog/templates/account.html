@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 		    <div class="span3 div-style">
-		    	<img src="{{user.prouser.headimg}}" alt="" width=80px height=80px>
+		    	<img src="/static/{{user.prouser.headimg}}" alt="" width=80px height=80px>
 				<h3>{{user.username}}</h3>		
 				<div>
 					<li><a href="/blog/{{user.id}}">个人主页</a></li>
@@ -54,8 +54,9 @@
 				          <label class="control-label">上传头像</label>
 
 				          <!-- File Upload -->
-				          <div class="controls">
-				            <input class="input-file" id="fileInput" type="file" name="headimg">
+				          <div class="controls"style="position:relative;">
+<input class="input-medium"id="show-file" type="text"style="width:186px;" /> <button type="submit" class="btn">选择图片</button>
+				            <input class="input-file" id="fileInput" type="file" name="headimg" style="position:absolute;left:0px;width:285px;filter:alpha(opacity:0);opacity:0;"onchange="document.getElementById('show-file').value=this.value">
 				          </div>
 				        </div>
 
