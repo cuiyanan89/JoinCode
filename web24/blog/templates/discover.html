@@ -19,7 +19,7 @@
 					<div class="well sidebar-nav">
 						<h3>热门小组</h3>
 					<ul class="nav nav-list">
-						{% for group in group_list %}
+						{% for group in groups %}
 						<li><a href="/group/{{group.id}}/">{{group.groupname}}</a></li>
 						{% endfor %}
 						
@@ -33,9 +33,7 @@
 			</div>
 			<div class="span8">
                 <div class="well sidebar-nav">
-					<div class="container-fluid">
-                        <p>推荐de小站</p>
-					</div>
+                        <h3>推荐de小站</h3>
                 </div>
                         {%for groups in group_list%}
                             <div class="span12" style="margin-left:0px;">

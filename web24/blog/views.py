@@ -221,4 +221,4 @@ def discover(request):
         attentioned_list = user.members.all()
     else:
         attentioned_list = []
-    return render(request,'discover.html',{'group_list':group_list,'attentioned_list':attentioned_list})
+    return render(request,'discover.html',{'groups':groups[:4],'group_list':group_list,'attentioned_list':attentioned_list})
