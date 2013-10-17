@@ -53,6 +53,9 @@ def sign_user(request):
 		user = User.objects.create_user(username=username,email=email)
 		user.set_password(password)
 		user.save()
+		headimg = '/img/who.jpg'
+		prouser = ProUser.objects.create(user=user,headimg=headimg)
+		prouser.save()
 		id = user.id
 		user = authenticate(username=username, password=password)
 		if user is not None:
@@ -124,8 +127,7 @@ def blog_me(request, id):
 	about_user = User.objects.get(id=id)
 	letter_list = about_user.recv.all()
 	user = request.user 
-	return render(request, 'blog.html', {'about_user': about_user, 'user':user,
-					'letter_list':letter_list})
+	return render(request, 'blog.html', {'about_user': about_user, 'user':user,'letter_list':letter_list})
 
 def letter(request, id):
 	if request.user.is_authenticated():
@@ -190,21 +192,24 @@ def topic(request, id):
 	return render(request, 'topic.html',{'article':article})
 
 def account(request, id):
-	user = request.user
-	if request.method == 'POST':
-		email = request.POST.get('email',user.email)
-		if email:
-			user.email = email
-		headimg = request.FILES['headimg']
-		ProUser.objects.create(user=user,headimg=headimg)
-		password = request.POST.get('newpasswd')
-		if password:
-			password = hashlib.sha1(user.username + password).hexdigest()
-			user.set_password(password)
-		user.save()
-		return HttpResponseRedirect('/account/%s/' % id)
-
-	return render(request, 'account.html', {})
+    user = request.user
+    if request.method == "POST":
+        headimg = request.FILES['headimg']
+        attention_list = []
+        try:
+            attention_list = user.prouser.attention.all()
+        except:
+            pass
+        user.prouser.delete()
+        ProUser.objects.create(user=user,headimg=headimg)
+        for attention in attention_list:
+            user.prouser.attention.add(attention)
+        password = request.POST.get('newpasswd')
+        if password != '':
+            password = hashlib.sha1(user.username + password).hexdigest()
+            user.set_password(password)
+        user.save()
+    return render(request,'account.html',{})
 
 def logout_user(request):
 	request.session.clear()
