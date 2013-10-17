@@ -14,7 +14,7 @@
 
 		    <div class="span8 div-style">
 		      <div>
-				  <form class="form-horizontal" action="/account/{{user.id}}/" method="post" enctype="multipart/form-data">
+				  <form class="form-horizontal" action="" method="post" >
 				  	{% csrf_token %}
 				    <fieldset>
 				      <div id="legend" class="">

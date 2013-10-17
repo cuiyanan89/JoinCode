@@ -5,9 +5,11 @@ urlpatterns = patterns('',
     url(r'^test/$','blog.views.test'),
     url(r'^$', 'blog.views.index'),
     url(r'^index/$', 'blog.views.index'),
+	url(r'^p_index/(\d+)/$','blog.views.p_index'),
     url(r'^login/$', 'blog.views.login_user'),
     url(r'^logout/$', 'blog.views.logout_user'),
     url(r'^regist/$', 'blog.views.sign_user'),
+	url(r'^people_index/(\d+)/$','blog.views.people_index'),
     url(r'^create_group/$', 'blog.views.create_group'),
     url(r'^del_group/(?P<id>\d+)/$', 'blog.views.del_group'),
     url(r'^add_group/(?P<id>\d+)/$', 'blog.views.add_group'),
@@ -21,5 +23,9 @@ urlpatterns = patterns('',
     url(r'^account/(?P<id>\d+)/$', 'blog.views.account'),
     url(r'^article/(?P<id>\d+)/$', 'blog.views.article'),
     url(r'^topic/(?P<id>\d+)/$', 'blog.views.topic'),
+<<<<<<< HEAD
     url(r'^discover/$','blog.views.discover'),
+=======
+	url(r'^cancel_attention/(?P<id>\d+)/$','blog.views.cancel_attention')
+>>>>>>> 5120f7afb3cf412eb44f2ff880f28b6e1a42186d
 )

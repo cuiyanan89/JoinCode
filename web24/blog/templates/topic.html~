@@ -30,7 +30,7 @@
 			<div class="well sidebar-nav codehilite">
 				<h3>{{article.title}}</h3>
 				<p>发表时间 : {{article.create_time|date:"m/d/Y"}}</p>
-				&nbsp;&nbsp;&nbsp;{{article.content}}
+				&nbsp;&nbsp;&nbsp;{{article.content|markdown:'codehilite'}}
 			</div>
 			<div class="row-fluid">
 				<div class="well sidebar-nav">
@@ -41,7 +41,7 @@
 							<a href="/blog/{{reply.user.id}}/">来自:{{reply.user.username}}</a></span>
 						<p>{{reply.create_time|date:"m/d/Y"}}</p>
 		               	<div class="controls">
-		               		{{reply.content}}
+		               		{{reply.content|markdown:'codehilite'}}
 		               	</div>
 	                </div>
 				{% endfor %}

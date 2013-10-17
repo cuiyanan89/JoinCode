@@ -13,9 +13,25 @@ import hashlib
 	
 def index(request):
 	group_list = Group.objects.order_by('-id').all()[:5]
-	article_list = Article.objects.order_by('-id').all()
-	return render(request,'index.html',{'group_list': group_list, 
-				'user':request.user, 'article_list':article_list})
+	article_list = Article.objects.order_by('-id').all()[:5]
+	return render(request,'index.html',{'group_list': group_list, 'user':request.user,'article_list':article_list})
+
+
+def p_index(request,id):
+	if request.user.is_authenticated():
+		group_list = Group.objects.order_by('-id').all()[:5]
+		article_list = Article.objects.order_by('-id').all()[:5]
+		u = User.objects.get(id=id)
+		add_user = u.prouser.attention.all()
+		print add_user
+	return render(request,'p_index.html',{'group_list': group_list, 'user':request.user,'article_list':article_list,'add_user':add_user})
+
+
+
+def people_index(req,id):
+	u = User.objects.get(id=id)
+	article_list = u.article_set.order_by('-id').all()[:5]
+	return render(req,'people_index.html',{'user_name':u,'article_list':article_list})
 
 def login_user(request):
 	if request.method == 'POST':
@@ -23,9 +39,10 @@ def login_user(request):
 		password = request.POST['passwd']
 		password = hashlib.sha1(username + password).hexdigest()
 		user = authenticate(username=username, password=password)
+		id = user.id
 		if user is not None:
 			login(request, user)
-	return HttpResponseRedirect('/index/')
+	return HttpResponseRedirect('/p_index/%s' % id)
 
 def sign_user(request):
 	if request.method == 'POST':
@@ -34,14 +51,13 @@ def sign_user(request):
 		password = request.POST['passwd']
 		password = hashlib.sha1(username + password).hexdigest()
 		user = User.objects.create_user(username=username,email=email)
-		headimg = "http://bcs.duapp.com/danpy5/upload/sunny.jpg"
 		user.set_password(password)
-		ProUser.objects.create(user=user, headimg=headimg)
 		user.save()
 		user = authenticate(username=username, password=password)
+		id = user.id
 		if user is not None:
 			login(request, user)
-		return HttpResponseRedirect('/index/')
+		return HttpResponseRedirect('/p_index/%s' % id)
 	else:
 		return HttpResponseRedirect('/index/')
 
@@ -135,12 +151,22 @@ def attention(request, id):
 	if request.user.is_authenticated():
 		user = request.user
 		user.prouser.attention.add(about_user)
-		return HttpResponseRedirect('/index/')
+		id = id
+		return HttpResponseRedirect('/cancel_attention/%s' % id)
 	return HttpResponse('attention friends')
+
+
+def cancel_attention(request,id):
+	about_user = User.objects.get(id=id)
+	if request.user.is_authenticated():
+		user = request.user
+		user.prouser.attention.remove(about_user)
+	return render(request, 'blog.html', {'about_user':about_user, 'user':user})
+
 
 def del_group(request, id):
 	group = Group.objects.get(id=id)
-	group.delete()
+	grouernam.delete()
 	return HttpResponseRedirect('/index/')
 
 def article(request, id):
@@ -170,9 +196,8 @@ def account(request, id):
 		email = request.POST.get('email',user.email)
 		if email:
 			user.email = email
-		headimg = 'http://bcs.duapp.com/danpy5/upload/sunny.jpg'
-		user.prouser.headimg = headimg
-		user.prouser.save()
+		headimg = request.FILES['headimg']
+		ProUser.objects.create(user=user,headimg=headimg)
 		password = request.POST.get('newpasswd')
 		if password:
 			password = hashlib.sha1(user.username + password).hexdigest()
@@ -185,6 +210,7 @@ def account(request, id):
 def logout_user(request):
 	request.session.clear()
 	return HttpResponseRedirect('/index/')
+<<<<<<< HEAD
 
 def discover(request):
     groups = Group.objects.filter(isPublic=True)[::-1]
@@ -196,3 +222,5 @@ def discover(request):
     else:
         attentioned_list = []
     return render(request,'discover.html',{'group_list':group_list,'attentioned_list':attentioned_list})
+=======
+>>>>>>> 5120f7afb3cf412eb44f2ff880f28b6e1a42186d

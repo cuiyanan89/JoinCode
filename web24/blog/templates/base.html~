@@ -38,27 +38,15 @@
 	{% include "header.html"%}
 	<div class="container">
 		<div class="container-narrow"  style="margin-top: 70px;">
-<<<<<<< HEAD
-	<div class="masthead">
-		<ul class="nav nav-pills pull-right">
-			<li><a href="/#/">我的Joincode</a></li>
-			<li><a href="/discover/">浏览发现</a></li>
-		</ul>
-		<h3 class="muted"><a href="/index/">Join code</a></h3>
-	</div>
-	<hr>
-</div>
-=======
 			<div class="masthead">
 				<ul class="nav nav-pills pull-right">
 					<li><a href="/people_index/{{user.id}}">我的Joincode</a></li>
 					<li><a href="#">浏览发现</a></li>
 				</ul>
-				<h3 class="muted"><a href="/p_index/{{user.id}}">Join code</a></h3>
+				<h3 class="muted"><a href="/index/">Join code</a></h3>
 			</div>
 			<hr>
 		</div>
->>>>>>> 5120f7afb3cf412eb44f2ff880f28b6e1a42186d
 		{% block content%}{%endblock%}
 	</div>
 	<div class="container">
