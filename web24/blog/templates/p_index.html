@@ -10,8 +10,8 @@
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
 						<li><a href="/blog/{{user.id}}/">我发起的活动</a></li>
-						<li><a href="">我的小组话题</a></li>
-						<li><a href="">我回应的活动</a></li>
+						<li><a href="/group/">我的小组话题</a></li>
+						<li><a href="/topic/{{user.id}}">我回应的活动</a></li>
 						<li><a href="/create_group/">申请小组</a></li>
 					</ul>
 				</div>
@@ -20,7 +20,7 @@
 						<h3>我关注的人</h3>
 						<ul class="nav nav-list">
 							{% for i in add_user %}
-							<li><a href="">{{i}}</a></li>
+							<li><a href="/blog/{{i.id}}/">{{i}}</a></li>
 							{% endfor %}
 						</ul>				
 					</div>

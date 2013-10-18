@@ -4,7 +4,6 @@
 {%block content%}
 
 	<div class="container">
-		{% load markup %}
 		<div class="row-fluid">
 			<div class="span4">
 				<div class="well sidebar-nav">
@@ -63,25 +62,13 @@
 				</div>
 				<div class="span12">
 					<div class="row-fluit">
-						{% for article in article_list %}
 						<div class="well sidebar-nav codehilite">
 							<ul>
 								<li>
-									<img src="{{article.author.prouser.headimg}}" alt="" width="50px">
-									<h5>作者:{{article.author}}</h5>
-									<p> 标题 :{{article.title}}</p>
-									<p> 内容 :{{article.content|markdown:'codehilite'}}</p>
-									<p> 发表时间 : {{article.create_time|date:"m/d/Y"}} 来自 {{article.group}}小组</p>
-                                    {%if user.username%}
-									<a class="btn btn-primary" href="/topic/{{article.id}}/" data-toggle="modal">回帖 »</a>				
-                                    {%else%}
-									<a class="btn btn-primary disabled" href="" data-toggle="modal">回帖 »</a>				
-                                    {%endif%}
 								</li>							
 							</ul>
 						</div>
 						<hr/>
-						{% endfor %}
 					</div>
 				</div>
 			</div>
