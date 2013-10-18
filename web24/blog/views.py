@@ -75,8 +75,8 @@ def create_group(request):
 				is_done = False
 			groupname = request.POST.get('groupname')
 			groupdesc = request.POST.get('groupdesc')
-			group = Group.objects.create(groupname=groupname,master=user,
-				isPublic=is_done ,description=groupdesc)
+			groupimg = 'img/group.jpg'
+			group = Group.objects.create(groupname=groupname,master=user,groupimg=groupimg,isPublic=is_done ,description=groupdesc)
 			group.members.add(user)
 			group.save()
 			return HttpResponseRedirect('/index/')
@@ -167,7 +167,7 @@ def cancel_attention(request,id):
 
 def del_group(request, id):
 	group = Group.objects.get(id=id)
-	grouernam.delete()
+	group.delete()
 	return HttpResponseRedirect('/index/')
 
 def article(request, id):
@@ -228,3 +228,13 @@ def discover(request):
     else:
         attentioned_list = []
     return render(request,'discover.html',{'groups':groups[:4],'group_list':group_list,'attentioned_list':attentioned_list,'article_list':article_list})
+def group_my(req):
+	u = req.user
+	article_list = u.article_set.order_by('-id').all()[:5]
+	groups = u.members.all()[::-1]
+	print groups[-1]
+	group_len = len(groups)
+	group_list = zip([groups[x] for x in filter(lambda x: x%2==0,xrange(group_len))],[groups[x] for x in filter(lambda x: x%2==1,xrange(group_len))])
+	if group_len%2==1:
+	    group_list.append((groups[-1],))
+	return render(req,'group_my.html',{'user_name':u,'article_list':article_list,'group_list':group_list})

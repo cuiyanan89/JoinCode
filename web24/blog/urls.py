@@ -24,5 +24,6 @@ urlpatterns = patterns('',
     url(r'^article/(?P<id>\d+)/$', 'blog.views.article'),
     url(r'^topic/(?P<id>\d+)/$', 'blog.views.topic'),
     url(r'^discover/$','blog.views.discover'),
-	url(r'^cancel_attention/(?P<id>\d+)/$','blog.views.cancel_attention')
+	url(r'^cancel_attention/(?P<id>\d+)/$','blog.views.cancel_attention'),
+	url(r'^group_my/$','blog.views.group_my'),
 )
