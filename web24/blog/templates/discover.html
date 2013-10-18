@@ -47,9 +47,9 @@
                                 <div class="well sidebar-nav">
                                 <div class="container-fluid">
                                     {%if group in attentioned_list%}
-                                    <div class="span4"><img href=""alt="img" style="left;width:70px;height:70px;"align="left"></div><div class="span8" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;"><a href="/group/{{group.id}}">{{group.groupname}}</a><br/>{{group.description}}<br/><a class="btn disabled">已关注</a></div>
+                                    <div class="span4"><img src="/static/{{group.groupimg}}"alt="img" style="left;width:70px;height:70px;"align="left"></div><div class="span8" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;"><a href="/group/{{group.id}}">{{group.groupname}}</a><br/>{{group.description}}<br/><a class="btn disabled">已关注</a></div>
                                     {%else%}
-                                    <div class="span4"><img href=""alt="img" style="left;width:70px;height:70px;"align="left"></div><div class="span8" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;"><a href="/group/{{group.id}}">{{group.groupname}}</a><br/>{{group.description}}<br/><a class="btn btn-success"href="/add_group/{{group.id}}">关注</a></div>
+                                    <div class="span4"><img src="/static/{{group.groupimg}}"alt="img" style="left;width:70px;height:70px;"align="left"></div><div class="span8" style="text-overflow:ellipsis;white-space:nowrap;overflow:hidden;"><a href="/group/{{group.id}}">{{group.groupname}}</a><br/>{{group.description}}<br/><a class="btn btn-success"href="/add_group/{{group.id}}">关注</a></div>
                                     {%endif%}
                                 </div>
                                 </div>
