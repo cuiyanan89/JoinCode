@@ -219,6 +219,7 @@ def discover(request):
     groups = Group.objects.filter(isPublic=True)[::-1]
     group_len = len(groups)
     group_list = zip([groups[x] for x in filter(lambda x: x%2==0,xrange(group_len))],[groups[x] for x in filter(lambda x: x%2==1,xrange(group_len))])
+    article_list = Article.objects.order_by('-id').all()[:5]
     if group_len%2==1:
         group_list.append((groups[-1],))
     if request.user.is_authenticated():
@@ -226,4 +227,4 @@ def discover(request):
         attentioned_list = user.members.all()
     else:
         attentioned_list = []
-    return render(request,'discover.html',{'groups':groups[:4],'group_list':group_list,'attentioned_list':attentioned_list})
+    return render(request,'discover.html',{'groups':groups[:4],'group_list':group_list,'attentioned_list':attentioned_list,'article_list':article_list})
