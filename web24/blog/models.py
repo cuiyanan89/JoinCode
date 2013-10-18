@@ -61,3 +61,8 @@ class Reply(models.Model):
 	user = models.ForeignKey(User)
 	article = models.ForeignKey(Article)
 
+class Rreplay(models.Model):
+    content = models.TextField(verbose_name=u'content')
+    create_time = models.DateTimeField(auto_now_add=True,verbose_name=u'createtime')
+    user = models.ForeignKey(User)
+    reply = models.ForeignKey(Reply)

@@ -43,13 +43,30 @@
 		               	<div class="controls">
 		               		{{reply.content}}
 		               	</div>
+                        <hr/>
 	                </div>
+                        <button type='button'class="btn btn-btn-danger" data-toggle="collapse"data-target="#demo{{reply.id}}">卷起</button>
+                        <div id="demo{{reply.id}}"class="collapse in"><hr/>
+                        {%for rreplay in reply.rreplay_set.all%}
+                            <div><img src="/static/{{rreplay.user.prouser.headimg}}"width='30px;'>say:&nbsp;{{rreplay.content}}<hr/>
+                            </div>
+                        {%endfor%}
+				        <form action="/r_replay/{{reply.id}}/" method="post">{% csrf_token %}
+				        <div class="control-group">
+                        <textarea type="" name="content" style="margin: 0px; width: 565px; height: 36px;"></textarea>
+                        </div>
+	                    <div class="control-group">
+	               	    <div class="controls">
+	            		<button type="submit" class="btn btn-success">提交</button>
+	          		</div>
+	          	</div>
+				</form></div>
 				{% endfor %}
 				</div>
 			</div>
 			{% if user %}
 			<div class="well sidebar-nav">
-				<form action="" method="post">
+				<form action="/topic/{{article.id}}/" method="post">
 					{% csrf_token %}
 				 <div class="control-group">
                   <textarea type="" name="content" style="margin: 0px; width: 565px; height: 36px;"></textarea>

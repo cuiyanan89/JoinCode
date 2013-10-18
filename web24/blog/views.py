@@ -4,7 +4,7 @@ from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.models import User 
-from blog.models  import Letter, Group,ProUser, Article, Reply
+from blog.models  import Letter, Group,ProUser, Article, Reply,Rreplay
 from django.contrib.auth import login, logout, authenticate
 from django.core.exceptions import ObjectDoesNotExist
 import hashlib
@@ -190,7 +190,15 @@ def topic(request, id):
 		if content:
 			Reply.objects.create(content=content, article=article,user=user)	
 	return render(request, 'topic.html',{'article':article})
-
+def r_replay(req,id):
+    reply = Reply.objects.get(id=id)
+    article_id = reply.article.id
+    user = req.user
+    if req.method == 'POST':
+        content = req.POST.get('content')
+        if content != '':
+            Rreplay.objects.create(content=content,user=user,reply=reply)
+    return HttpResponseRedirect('/topic/%s/'%article_id)
 def account(request, id):
     user = request.user
     if request.method == "POST":
