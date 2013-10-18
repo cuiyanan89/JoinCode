@@ -11,7 +11,7 @@
 			<div class="well sidebar-nav">
 				 
 		      <div>
-		      	<img src="{{article.author.prouser.headimg}}" width="80px" height="80px" alt="">
+		      	<img src="/static/{{article.author.prouser.headimg}}" width="80px" height="80px" alt="">
 		      	<li>组长:<a href="/blog/{{article.author.id}}/">{{article.author.username}}</a></li>
 		      </div>
 		    </div>
@@ -37,7 +37,7 @@
 					<h3>Reply</h3>
 				{% for reply in article.reply_set.all %}
 					<div class="control-group codehilite">
-						<span><img src="{{reply.user.prouser.headimg}}" height='40px' width='40px' alt="">
+						<span><img src="/static/{{reply.user.prouser.headimg}}" height='40px' width='40px' alt="">
 							<a href="/blog/{{reply.user.id}}/">来自:{{reply.user.username}}</a></span>
 						<p>{{reply.create_time|date:"m/d/Y"}}</p>
 		               	<div class="controls">
@@ -52,7 +52,7 @@
 				<form action="" method="post">
 					{% csrf_token %}
 				 <div class="control-group">
-                  <textarea type="" name="content" style="margin: 0px; width: 714px; height: 36px;"></textarea>
+                  <textarea type="" name="content" style="margin: 0px; width: 565px; height: 36px;"></textarea>
               </div>
 	            <div class="control-group">
 	               	<div class="controls">
